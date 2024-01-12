@@ -1,0 +1,45 @@
+@layout('layouts/main')
+@set('title', 'Login')
+
+@section('body')
+
+<div class="bg-violet flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <img class="mx-auto h-10 w-auto" src="/logo.png">
+    <h2 class="text-white mt-10 text-center text-2xl font-bold leading-9 tracking-tight">Connectez-vous à votre compte</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+
+    @component('components/form/form', {
+    'action': '',
+    'method': 'post',
+    })
+    @!component('components/form/field', {
+    'label': 'E-mail :',
+    'name': 'email',
+    'type': 'email',
+    'required': true,
+    'placeholder': 'exemple@mail.com',
+    })
+    @!component('components/form/field', {
+    'label': 'Mot de passe :',
+    'name': 'password',
+    'type': 'password',
+    'required': true,
+    'placeholder': 'Votre mot de passe',
+    })
+    @!component('components/form/button', {
+    'type': 'submit',
+    'text': 'Envoyer',
+    })
+    @end
+
+    <p class="mt-10 text-center text-sm text-gray-500">
+      Vous n'êtes pas membre ?
+      <a href="{{ route('signup') }}" class="font-semibold leading-6 text-jaune">Créez votre compte</a>
+    </p>
+  </div>
+</div>
+
+@end
